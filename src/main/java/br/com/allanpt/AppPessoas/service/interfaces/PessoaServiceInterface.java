@@ -8,9 +8,12 @@ import java.util.Optional;
 public interface PessoaServiceInterface {
 
     Pessoa save(Pessoa pessoa);
+
     Optional<Pessoa> findById(Long id);
-    //mala direta - PessoaDTO
+
     List<Pessoa> findAll();
-    Pessoa update(Long id,Pessoa pessoa);
+
+    Pessoa update(Long id, Pessoa pessoa);
+
     void delete(Long id);
 }

@@ -10,7 +10,6 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Optional;
-import java.util.Set;
 
 @RestController
 @RequestMapping("/api/contatos")
@@ -56,7 +55,6 @@ public class ContatoResource {
         }
 
 
-
         return ResponseEntity.ok(contatos);
     }
 
@@ -64,7 +62,9 @@ public class ContatoResource {
     @PutMapping("/{id}")
     public ResponseEntity<Contato> update(@PathVariable Long id, @RequestBody Contato contato) {
 
-        Contato updateContato = contatoService.update(id,contato);
+        Contato updateContato = contatoService.update(id,
+                contato
+        );
 
         if (updateContato == null) {
             return ResponseEntity.notFound().build();
@@ -75,7 +75,7 @@ public class ContatoResource {
 
     @Operation(summary = "Exclui o registro do Contato por ID")
     @DeleteMapping("/{id}")
-    public ResponseEntity<?> delete(@PathVariable Long id){
+    public ResponseEntity<?> delete(@PathVariable Long id) {
         contatoService.delete(id);
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }

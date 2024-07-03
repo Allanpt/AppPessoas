@@ -9,21 +9,13 @@ import java.util.Objects;
 @Table(name = "tb_contato")
 public class Contato {
 
-    enum TiposContato {
-        TELEFONE,
-        CELULAR
-    }
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
     @Column(nullable = false)
     private Integer tipoContato;
-
     @Column(nullable = false)
     private String contato;
-
     @ManyToOne
     @JoinColumn(name = "pessoa_id", referencedColumnName = "id")
     @JsonBackReference
@@ -101,5 +93,10 @@ public class Contato {
                 ", tipoContato=" + tipoContato +
                 ", contato='" + contato + '\'' +
                 '}';
+    }
+
+    enum TiposContato {
+        TELEFONE,
+        CELULAR
     }
 }

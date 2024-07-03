@@ -63,7 +63,9 @@ public class PessoaResource {
     @PutMapping("/{id}")
     public ResponseEntity<Pessoa> update(@PathVariable Long id, @RequestBody Pessoa pessoa) {
 
-        Pessoa updatePessoa = pessoaService.update(id, pessoa);
+        Pessoa updatePessoa = pessoaService.update(id,
+                pessoa
+        );
 
         if (updatePessoa == null) {
             return ResponseEntity.notFound().build();
@@ -74,7 +76,7 @@ public class PessoaResource {
 
     @Operation(summary = "Exclui o registro da pessoa por ID")
     @DeleteMapping("/{id}")
-    public ResponseEntity<?> delete(@PathVariable Long id){
+    public ResponseEntity<?> delete(@PathVariable Long id) {
         pessoaService.delete(id);
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }

@@ -11,7 +11,6 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 import java.util.Optional;
 import java.util.Set;
-import java.util.stream.Collectors;
 
 @Service
 public class ContatoService implements ContatoServiceInterface {
@@ -66,7 +65,7 @@ public class ContatoService implements ContatoServiceInterface {
     public Contato update(Long id, Contato contato) {
         Optional<Contato> findContato = contatoRepository.findById(id);
 
-        if(findContato.isPresent()) {
+        if (findContato.isPresent()) {
             Contato newContato = findContato.get();
             newContato.setContato(contato.getContato());
             newContato.setTipoContato(contato.getTipoContato());

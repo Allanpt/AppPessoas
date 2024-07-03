@@ -1,7 +1,6 @@
 package br.com.allanpt.AppPessoas.service;
 
 import br.com.allanpt.AppPessoas.dto.PessoaDTO;
-import br.com.allanpt.AppPessoas.model.Contato;
 import br.com.allanpt.AppPessoas.model.Pessoa;
 import br.com.allanpt.AppPessoas.repository.PessoaRepository;
 import br.com.allanpt.AppPessoas.service.interfaces.PessoaServiceInterface;
@@ -26,7 +25,7 @@ public class PessoaService implements PessoaServiceInterface {
 
         try {
             return pessoaRepository.save(pessoa);
-        }catch (Exception e) {
+        } catch (Exception e) {
             System.out.println("ERR: Erro ao inserir produto " +
                     pessoa.toString() + ": " + e.getMessage());
             return null;
@@ -66,7 +65,7 @@ public class PessoaService implements PessoaServiceInterface {
         pessoaRepository.deleteById(id);
     }
 
-    public PessoaDTO findPessoaMalaDireta(Long id){
+    public PessoaDTO findPessoaMalaDireta(Long id) {
         Pessoa findPessoa = findById(id).get();
 
         Long idPessoa = findPessoa.getId();
@@ -74,7 +73,10 @@ public class PessoaService implements PessoaServiceInterface {
         String malaDireta =
                 findPessoa.getEndereco() + " – CEP: " + findPessoa.getCep() + " – " + findPessoa.getCidade() + "/" + findPessoa.getUf();
 
-        PessoaDTO pessoaDTO = new PessoaDTO(idPessoa,nomePessoa, malaDireta);
+        PessoaDTO pessoaDTO = new PessoaDTO(idPessoa,
+                nomePessoa,
+                malaDireta
+        );
 
         return pessoaDTO;
     }
